@@ -1,0 +1,28 @@
+1. 前往www.udacity.com/ 使用账号xxxxx 密码xxxxx 登陆
+
+2. 打开https://www.udacity.com/dashboard/enrollments，定位到 #__next > div > main > div > div > div.chakra-container.css-h3x02v > section.css-1821gv5 所包含的所有子项目，也就是课程。比如Flying Car and Autonomous Flight Engineer #__next > div > main > div > div > div.chakra-container.css-h3x02v > section.css-1821gv5 > article:nth-child(1) > div > div.css-1bkjvl7 > div.css-1v87a54 > a
+
+3. 接下来以Flying Car and Autonomous Flight Engineer课程为例，点击课程标题，进入课程首页
+
+4. 每个enrollment课程的页面布局是相似的，课程页面将显示所包含的course，点击每个course标题将展开所包含的lesson
+
+5. 你要做的是能够从头依次点击每个lesson的#accordion-panel-\:ri\: > div > div:nth-child(1) > article > div.css-1vq6r9n > a > div > svg，进入lesson主页
+
+6. 在lesson的主页，最重要的是定位到body > div:nth-child(2) > div > div.css-fyjzjk > main > div.css-q4uwlf > div.css-1y6w97z > div > button，用于翻页
+持续点击翻页，最终当弹出Lesson Rating窗口时，代表当前course已经完毕，回到第4步，循环，直到此课程结束。
+
+# 1-6已完成，接下来是具体的下载指示。仍然以Flying Car and Autonomous Flight Engineer课程为例
+层级结构是：enrollment > course > lesson > chapter
+
+7. 每进入一个course，页面左侧#lesson-panel > div.css-1y725ay > div > ol > li:nth-child(1) > div部分将显示每个chapter，可依次点击显示学习内容
+
+8. 接下来是关键下载逻辑：按照层级结构，每个enrollment你需要在路径下创建对应名字的文件夹，例如Flying Car and Autonomous Flight Engineer，并按照course title 创建子目录，例如introducion to autonomous flight。再在其中依次根据lesson name创建子目录。反正就是这么个逻辑，方便分类。
+
+9. 每个chapter的body > div:nth-child(2) > div > div.css-fyjzjk > main > div.css-q4uwlf > div.lesson-content-scroll-container.css-1scprcg > div.css-s3v1ed，忽略嵌入的视频，但是课程文字、图片和包含的代码，需要将其保存在相应标题的html文件内（在对应的lesson目录下），也就是你要创建一个简单的html模板用于展示这个chapter的内容。有的chapter没有文本，为了统一也要创建html文件，但名字就写EMPTY
+
+10. 定位到右侧的 #popover-trigger-«r7u» > svg，将会提供每个lesson的ideo和transcript zip。每个lesson只需要各下载一次，并放在对应lesson的路径下。不用解压缩
+
+11. 关键点：有的chapter以exercise结尾，比如Breadth-First Exercise，这样的命名代表此chapter可能有额外的代码，此时需要进入后下拉到底检查是否有需要开启的workspace，有则点击body > div:nth-child(2) > div > div.css-fyjzjk > main > div.css-q4uwlf > div.lesson-content-scroll-container.css-1scprcg > div.css-s3v1ed > div > div:nth-child(12) > div > div > div > div > div > button启动workspace，并等待启动。启动后直接定位到<button type="button" class="chakra-button css-16wb16w"><span class="chakra-button__icon css-1wh2kri"><div class="css-vu4bb3"><p class="chakra-text css-qxdllm">1</p></div></span>Settings</button>，点击workspace 的settings，然后点击body > div:nth-child(2) > div > div.css-fyjzjk > main > div.css-q4uwlf > div.lesson-content-scroll-container.css-1scprcg > div.css-s3v1ed > div > div:nth-child(12) > div > div > div > div.css-11ckqz7 > div > div.css-1yvoun6 > div.chakra-stack.css-801656 > div > button.chakra-button.css-1tognrb，即可下载jupyter notebook的代码文件。下载后要解压并按照chapter name重命名，放在lesson的子目录jupyter-notebook下。
+
+
+

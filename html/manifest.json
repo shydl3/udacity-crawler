@@ -1,0 +1,392 @@
+{
+  "courses": {
+    "nd787": {
+      "title": "Flying Car and Autonomous Flight Engineer",
+      "lessons": [
+        {
+          "key": "9e0f85aa-2cc9-4f5e-b693-cf9cc4e28b4c",
+          "url": "https://learn.udacity.com/nanodegrees/nd787/parts/38a7bd72-fb8f-4dee-87af-9ede044d5c70/lessons/9e0f85aa-2cc9-4f5e-b693-cf9cc4e28b4c",
+          "file": "html/sources/nd787/01_9e0f85aa-2cc9-4f5e-b693-cf9cc4e28b4c.html",
+          "ok": true,
+          "skipped": true
+        },
+        {
+          "key": "welcome-services",
+          "url": "https://learn.udacity.com/nanodegrees/nd787/parts/38a7bd72-fb8f-4dee-87af-9ede044d5c70/lessons/welcome-services",
+          "file": "html/sources/nd787/02_welcome-services.html",
+          "ok": true,
+          "skipped": true
+        },
+        {
+          "key": "96521642-4eca-4695-b23a-cea9773e1d6c",
+          "url": "https://learn.udacity.com/nanodegrees/nd787/parts/cd1717/lessons/96521642-4eca-4695-b23a-cea9773e1d6c",
+          "file": "html/sources/nd787/03_96521642-4eca-4695-b23a-cea9773e1d6c.html",
+          "ok": true,
+          "skipped": true
+        },
+        {
+          "key": "e3a51ce5-fce2-46fb-a1a9-b74e4ab3f753",
+          "url": "https://learn.udacity.com/nanodegrees/nd787/parts/cd1717/lessons/e3a51ce5-fce2-46fb-a1a9-b74e4ab3f753",
+          "file": "html/sources/nd787/04_e3a51ce5-fce2-46fb-a1a9-b74e4ab3f753.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd787?version=4.0.11&partKey=cd1717&lessonKey=e3a51ce5-fce2-46fb-a1a9-b74e4ab3f753&conceptKey=ef56a2c0-1f5f-4f13-b019-78020b126462"
+        },
+        {
+          "key": "71f9dedb-32a4-42ee-a1e8-b8935bf52e58",
+          "url": "https://learn.udacity.com/nanodegrees/nd787/parts/cd1717/lessons/71f9dedb-32a4-42ee-a1e8-b8935bf52e58",
+          "file": "html/sources/nd787/05_71f9dedb-32a4-42ee-a1e8-b8935bf52e58.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd787?version=4.0.11&partKey=cd1717&lessonKey=71f9dedb-32a4-42ee-a1e8-b8935bf52e58&conceptKey=3b59fa12-9eb2-432b-967a-115cc8a70d12"
+        },
+        {
+          "key": "a8616a5c-4c99-4256-bdd2-335eed1404a7",
+          "url": "https://learn.udacity.com/nanodegrees/nd787/parts/cd1717/lessons/a8616a5c-4c99-4256-bdd2-335eed1404a7",
+          "file": "html/sources/nd787/06_a8616a5c-4c99-4256-bdd2-335eed1404a7.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd787?version=4.0.11&partKey=cd1717&lessonKey=a8616a5c-4c99-4256-bdd2-335eed1404a7&conceptKey=ce34f640-84d9-4580-9972-06483f8fb717"
+        },
+        {
+          "key": "61676998-db83-41ab-9543-4abfa7d17af4",
+          "url": "https://learn.udacity.com/nanodegrees/nd787/parts/cd1718/lessons/61676998-db83-41ab-9543-4abfa7d17af4",
+          "file": "html/sources/nd787/07_61676998-db83-41ab-9543-4abfa7d17af4.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd787?version=4.0.11&partKey=cd1718&lessonKey=61676998-db83-41ab-9543-4abfa7d17af4&conceptKey=77c14ac4-56ea-4b54-8849-0f34b82c9de6"
+        },
+        {
+          "key": "5725795f-57b8-4858-817a-b983e027b276",
+          "url": "https://learn.udacity.com/nanodegrees/nd787/parts/cd1718/lessons/5725795f-57b8-4858-817a-b983e027b276",
+          "file": "html/sources/nd787/08_5725795f-57b8-4858-817a-b983e027b276.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd787?version=4.0.11&partKey=cd1718&lessonKey=5725795f-57b8-4858-817a-b983e027b276&conceptKey=d58473f1-a6ac-4124-8354-6fb9e294d32b"
+        },
+        {
+          "key": "7f6d5c98-2699-4c2d-8f8d-73fee3ef28e3",
+          "url": "https://learn.udacity.com/nanodegrees/nd787/parts/cd1718/lessons/7f6d5c98-2699-4c2d-8f8d-73fee3ef28e3",
+          "file": "html/sources/nd787/09_7f6d5c98-2699-4c2d-8f8d-73fee3ef28e3.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd787?version=4.0.11&partKey=cd1718&lessonKey=7f6d5c98-2699-4c2d-8f8d-73fee3ef28e3&conceptKey=2c5bf020-831e-4225-8273-6664db84f5eb"
+        },
+        {
+          "key": "8567d317-4ed9-430f-a7c6-4754c8364c23",
+          "url": "https://learn.udacity.com/nanodegrees/nd787/parts/cd1718/lessons/8567d317-4ed9-430f-a7c6-4754c8364c23",
+          "file": "html/sources/nd787/10_8567d317-4ed9-430f-a7c6-4754c8364c23.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd787?version=4.0.11&partKey=cd1718&lessonKey=8567d317-4ed9-430f-a7c6-4754c8364c23&conceptKey=aee4f4ce-07fd-48f6-8033-063e77bcd163"
+        },
+        {
+          "key": "dc8e82aa-41d2-4556-8693-3f47db557620",
+          "url": "https://learn.udacity.com/nanodegrees/nd787/parts/cd1718/lessons/dc8e82aa-41d2-4556-8693-3f47db557620",
+          "file": "html/sources/nd787/11_dc8e82aa-41d2-4556-8693-3f47db557620.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd787?version=4.0.11&partKey=cd1718&lessonKey=dc8e82aa-41d2-4556-8693-3f47db557620&conceptKey=1d471951-6377-4881-9ff6-64f2765fe158"
+        },
+        {
+          "key": "58ae6f9e-5336-4f6b-abbf-caf6f3f65724",
+          "url": "https://learn.udacity.com/nanodegrees/nd787/parts/cd1718/lessons/58ae6f9e-5336-4f6b-abbf-caf6f3f65724",
+          "file": "html/sources/nd787/12_58ae6f9e-5336-4f6b-abbf-caf6f3f65724.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd787?version=4.0.11&partKey=cd1718&lessonKey=58ae6f9e-5336-4f6b-abbf-caf6f3f65724&conceptKey=8a95131d-bc67-43df-8eec-7d4df873f525"
+        },
+        {
+          "key": "759aa602-f626-46fe-bb3c-b06c48a0d578",
+          "url": "https://learn.udacity.com/nanodegrees/nd787/parts/cd1719/lessons/759aa602-f626-46fe-bb3c-b06c48a0d578",
+          "file": "html/sources/nd787/13_759aa602-f626-46fe-bb3c-b06c48a0d578.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd787?version=4.0.11&partKey=cd1719&lessonKey=759aa602-f626-46fe-bb3c-b06c48a0d578&conceptKey=4f9648b1-00cb-4fe8-a724-7a239e6d1944"
+        },
+        {
+          "key": "7d9927db-d34f-43ef-be1f-f4f21d23661c",
+          "url": "https://learn.udacity.com/nanodegrees/nd787/parts/cd1719/lessons/7d9927db-d34f-43ef-be1f-f4f21d23661c",
+          "file": "html/sources/nd787/14_7d9927db-d34f-43ef-be1f-f4f21d23661c.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd787?version=4.0.11&partKey=cd1719&lessonKey=7d9927db-d34f-43ef-be1f-f4f21d23661c&conceptKey=00011dd5-2bbb-46a2-a77c-1d6155533923"
+        },
+        {
+          "key": "0fad3a20-ebc5-43e2-8e14-0ebb18f0abc9",
+          "url": "https://learn.udacity.com/nanodegrees/nd787/parts/cd1719/lessons/0fad3a20-ebc5-43e2-8e14-0ebb18f0abc9",
+          "file": "html/sources/nd787/15_0fad3a20-ebc5-43e2-8e14-0ebb18f0abc9.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd787?version=4.0.11&partKey=cd1719&lessonKey=0fad3a20-ebc5-43e2-8e14-0ebb18f0abc9&conceptKey=b6fc6463-2545-48f8-8eaf-f3589f2fc4af"
+        },
+        {
+          "key": "f4d565b0-afa8-4f5a-8be4-ec3e92b71c1f",
+          "url": "https://learn.udacity.com/nanodegrees/nd787/parts/cd1719/lessons/f4d565b0-afa8-4f5a-8be4-ec3e92b71c1f",
+          "file": "html/sources/nd787/16_f4d565b0-afa8-4f5a-8be4-ec3e92b71c1f.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd787?version=4.0.11&partKey=cd1719&lessonKey=f4d565b0-afa8-4f5a-8be4-ec3e92b71c1f&conceptKey=f2bfdd10-6ea9-46ca-992a-4fc6f388c2a7"
+        },
+        {
+          "key": "d3329ebd-118d-4b39-85ef-1a71ce20b0eb",
+          "url": "https://learn.udacity.com/nanodegrees/nd787/parts/cd1719/lessons/d3329ebd-118d-4b39-85ef-1a71ce20b0eb",
+          "file": "html/sources/nd787/17_d3329ebd-118d-4b39-85ef-1a71ce20b0eb.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd787?version=4.0.11&partKey=cd1719&lessonKey=d3329ebd-118d-4b39-85ef-1a71ce20b0eb&conceptKey=9966967b-1f27-48af-a7f8-b4d677c491e5"
+        },
+        {
+          "key": "fa007d6b-0134-4eaf-9cc2-abd089a0aa9a",
+          "url": "https://learn.udacity.com/nanodegrees/nd787/parts/cd1719/lessons/fa007d6b-0134-4eaf-9cc2-abd089a0aa9a",
+          "file": "html/sources/nd787/18_fa007d6b-0134-4eaf-9cc2-abd089a0aa9a.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd787?version=4.0.11&partKey=cd1719&lessonKey=fa007d6b-0134-4eaf-9cc2-abd089a0aa9a&conceptKey=9965dd9b-b4f8-459b-ace5-bd095d327a08"
+        },
+        {
+          "key": "43bc7f6f-3748-4c86-8c03-59f70b3629c5",
+          "url": "https://learn.udacity.com/nanodegrees/nd787/parts/cd1720/lessons/43bc7f6f-3748-4c86-8c03-59f70b3629c5",
+          "file": "html/sources/nd787/19_43bc7f6f-3748-4c86-8c03-59f70b3629c5.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd787?version=4.0.11&partKey=cd1720&lessonKey=43bc7f6f-3748-4c86-8c03-59f70b3629c5&conceptKey=e3a91387-408e-4035-a926-6e54cfdb120b"
+        },
+        {
+          "key": "35967425-dcaf-444b-b0a9-5523e7451fbf",
+          "url": "https://learn.udacity.com/nanodegrees/nd787/parts/cd1720/lessons/35967425-dcaf-444b-b0a9-5523e7451fbf",
+          "file": "html/sources/nd787/20_35967425-dcaf-444b-b0a9-5523e7451fbf.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd787?version=4.0.11&partKey=cd1720&lessonKey=35967425-dcaf-444b-b0a9-5523e7451fbf&conceptKey=7cfdd3dc-9a0c-4679-ba72-ff6a438a4cfb"
+        },
+        {
+          "key": "2122a9db-18b8-4636-af8c-930c4692d001",
+          "url": "https://learn.udacity.com/nanodegrees/nd787/parts/cd1720/lessons/2122a9db-18b8-4636-af8c-930c4692d001",
+          "file": "html/sources/nd787/21_2122a9db-18b8-4636-af8c-930c4692d001.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd787?version=4.0.11&partKey=cd1720&lessonKey=2122a9db-18b8-4636-af8c-930c4692d001&conceptKey=7447bb55-6c93-4bb1-9470-e86665c8667a"
+        },
+        {
+          "key": "6817d838-5e45-4677-b788-ea581a8ef967",
+          "url": "https://learn.udacity.com/nanodegrees/nd787/parts/cd1720/lessons/6817d838-5e45-4677-b788-ea581a8ef967",
+          "file": "html/sources/nd787/22_6817d838-5e45-4677-b788-ea581a8ef967.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd787?version=4.0.11&partKey=cd1720&lessonKey=6817d838-5e45-4677-b788-ea581a8ef967&conceptKey=756d4493-da3d-4b17-8f9b-943cd566ffb4"
+        },
+        {
+          "key": "1962874a-c571-483d-8fb4-6ed183c52e75",
+          "url": "https://learn.udacity.com/nanodegrees/nd787/parts/cd1720/lessons/1962874a-c571-483d-8fb4-6ed183c52e75",
+          "file": "html/sources/nd787/23_1962874a-c571-483d-8fb4-6ed183c52e75.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd787?version=4.0.11&partKey=cd1720&lessonKey=1962874a-c571-483d-8fb4-6ed183c52e75&conceptKey=a24177c7-7fd8-4347-ab3b-e45f5d5b67c1"
+        },
+        {
+          "key": "b8687504-94fc-46e8-833d-28c00fb64a83",
+          "url": "https://learn.udacity.com/nanodegrees/nd787/parts/cd1720/lessons/b8687504-94fc-46e8-833d-28c00fb64a83",
+          "file": "html/sources/nd787/24_b8687504-94fc-46e8-833d-28c00fb64a83.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd787?version=4.0.11&partKey=cd1720&lessonKey=b8687504-94fc-46e8-833d-28c00fb64a83&conceptKey=fc441fa3-51ac-4988-a6d8-e1ee0f278ee0"
+        },
+        {
+          "key": "331fa673-60bd-4d59-b8ec-6ceacce3b81d",
+          "url": "https://learn.udacity.com/nanodegrees/nd787/parts/50bf71e1-4a57-456b-9933-e61b21bf0458/lessons/331fa673-60bd-4d59-b8ec-6ceacce3b81d",
+          "file": "html/sources/nd787/25_331fa673-60bd-4d59-b8ec-6ceacce3b81d.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd787?version=4.0.11&partKey=50bf71e1-4a57-456b-9933-e61b21bf0458&lessonKey=331fa673-60bd-4d59-b8ec-6ceacce3b81d&conceptKey=c3c8e990-44e9-4010-baeb-4eea5196b76c"
+        },
+        {
+          "key": "d29f75a7-97bc-4f7d-9175-01ecb1e481a0",
+          "url": "https://learn.udacity.com/nanodegrees/nd787/parts/cd1721/lessons/d29f75a7-97bc-4f7d-9175-01ecb1e481a0",
+          "file": "html/sources/nd787/26_d29f75a7-97bc-4f7d-9175-01ecb1e481a0.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd787?version=4.0.11&partKey=cd1721&lessonKey=d29f75a7-97bc-4f7d-9175-01ecb1e481a0&conceptKey=10788d99-cfa1-4157-8c28-4cac0dbf126c"
+        },
+        {
+          "key": "f2892242-c298-4010-b361-791de8da4320",
+          "url": "https://learn.udacity.com/nanodegrees/nd787/parts/cd1721/lessons/f2892242-c298-4010-b361-791de8da4320",
+          "file": "html/sources/nd787/27_f2892242-c298-4010-b361-791de8da4320.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd787?version=4.0.11&partKey=cd1721&lessonKey=f2892242-c298-4010-b361-791de8da4320&conceptKey=5c974d11-beef-4976-8019-a381c9941b78"
+        },
+        {
+          "key": "50b6ced9-b646-4331-a6a7-9ac1ee45d6f2",
+          "url": "https://learn.udacity.com/nanodegrees/nd787/parts/cd1721/lessons/50b6ced9-b646-4331-a6a7-9ac1ee45d6f2",
+          "file": "html/sources/nd787/28_50b6ced9-b646-4331-a6a7-9ac1ee45d6f2.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd787?version=4.0.11&partKey=cd1721&lessonKey=50b6ced9-b646-4331-a6a7-9ac1ee45d6f2&conceptKey=7fcccf06-70b3-4aa2-a0c6-1f0b40906191"
+        },
+        {
+          "key": "5d3453f1-2801-41e3-a5b0-0de68ad8bc57",
+          "url": "https://learn.udacity.com/nanodegrees/nd787/parts/cd1721/lessons/5d3453f1-2801-41e3-a5b0-0de68ad8bc57",
+          "file": "html/sources/nd787/29_5d3453f1-2801-41e3-a5b0-0de68ad8bc57.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd787?version=4.0.11&partKey=cd1721&lessonKey=5d3453f1-2801-41e3-a5b0-0de68ad8bc57&conceptKey=ad2df976-3c83-478e-9b15-953ab9a56f35"
+        },
+        {
+          "key": "d72aece7-de5d-4700-b1ec-6711c36078a9",
+          "url": "https://learn.udacity.com/nanodegrees/nd787/parts/cd1721/lessons/d72aece7-de5d-4700-b1ec-6711c36078a9",
+          "file": "html/sources/nd787/30_d72aece7-de5d-4700-b1ec-6711c36078a9.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd787?version=4.0.11&partKey=cd1721&lessonKey=d72aece7-de5d-4700-b1ec-6711c36078a9&conceptKey=530ea562-40df-4206-bd0d-9170d400af58"
+        },
+        {
+          "key": "e87394ea-42e0-4b5f-9e0a-c827180dc26a",
+          "url": "https://learn.udacity.com/nanodegrees/nd787/parts/cd1721/lessons/e87394ea-42e0-4b5f-9e0a-c827180dc26a",
+          "file": "html/sources/nd787/31_e87394ea-42e0-4b5f-9e0a-c827180dc26a.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd787?version=4.0.11&partKey=cd1721&lessonKey=e87394ea-42e0-4b5f-9e0a-c827180dc26a&conceptKey=e1391419-6c4e-49e9-b1d5-84fcd566186e"
+        },
+        {
+          "key": "13eaa5cb-8e1c-4440-8448-ea1cb0d06574",
+          "url": "https://learn.udacity.com/nanodegrees/nd787/parts/cd1722/lessons/13eaa5cb-8e1c-4440-8448-ea1cb0d06574",
+          "file": "html/sources/nd787/32_13eaa5cb-8e1c-4440-8448-ea1cb0d06574.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd787?version=4.0.11&partKey=cd1722&lessonKey=13eaa5cb-8e1c-4440-8448-ea1cb0d06574&conceptKey=7e17e072-2fb9-477e-a206-e5f344cefdf6"
+        }
+      ]
+    },
+    "nd898": {
+      "title": "Artificial Intelligence",
+      "lessons": [
+        {
+          "key": "e0f69177-00e9-4ba1-96cc-c6c362fe5f52",
+          "url": "https://learn.udacity.com/nanodegrees/nd898/parts/cd0327/lessons/e0f69177-00e9-4ba1-96cc-c6c362fe5f52",
+          "file": "html/sources/nd898/01_e0f69177-00e9-4ba1-96cc-c6c362fe5f52.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd898?version=6.0.10&partKey=cd0327&lessonKey=e0f69177-00e9-4ba1-96cc-c6c362fe5f52&conceptKey=e6d34d0f-1d89-4aa9-b01e-55382c3abe5a"
+        },
+        {
+          "key": "4268bc2a-07fb-4926-a0a1-324639fa1e96",
+          "url": "https://learn.udacity.com/nanodegrees/nd898/parts/cd0327/lessons/4268bc2a-07fb-4926-a0a1-324639fa1e96",
+          "file": "html/sources/nd898/02_4268bc2a-07fb-4926-a0a1-324639fa1e96.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd898?version=6.0.10&partKey=cd0327&lessonKey=4268bc2a-07fb-4926-a0a1-324639fa1e96&conceptKey=97fa9e69-bba1-4d33-a3e6-35a8205775d2"
+        },
+        {
+          "key": "534f92e3-2442-4272-9c44-6a9f662fe2bc",
+          "url": "https://learn.udacity.com/nanodegrees/nd898/parts/cd0327/lessons/534f92e3-2442-4272-9c44-6a9f662fe2bc",
+          "file": "html/sources/nd898/03_534f92e3-2442-4272-9c44-6a9f662fe2bc.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd898?version=6.0.10&partKey=cd0327&lessonKey=534f92e3-2442-4272-9c44-6a9f662fe2bc&conceptKey=2a4a2f5f-2d6f-4771-be2a-90e625c4a7b8"
+        },
+        {
+          "key": "497f390e-ac17-4b60-9342-065bde0008b0",
+          "url": "https://learn.udacity.com/nanodegrees/nd898/parts/cd0327/lessons/497f390e-ac17-4b60-9342-065bde0008b0",
+          "file": "html/sources/nd898/04_497f390e-ac17-4b60-9342-065bde0008b0.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd898?version=6.0.10&partKey=cd0327&lessonKey=497f390e-ac17-4b60-9342-065bde0008b0&conceptKey=51574aa7-b69a-4ed0-be34-a17c16fa5576"
+        },
+        {
+          "key": "9bdcf044-3a4e-4d92-b212-a4ca444cf588",
+          "url": "https://learn.udacity.com/nanodegrees/nd898/parts/cd0327/lessons/9bdcf044-3a4e-4d92-b212-a4ca444cf588",
+          "file": "html/sources/nd898/05_9bdcf044-3a4e-4d92-b212-a4ca444cf588.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd898?version=6.0.10&partKey=cd0327&lessonKey=9bdcf044-3a4e-4d92-b212-a4ca444cf588&conceptKey=db06732f-89dd-4d40-9e3b-c03e97a17368"
+        },
+        {
+          "key": "7bd061fe-f60b-4bab-81f0-36d5b8eeddc6",
+          "url": "https://learn.udacity.com/nanodegrees/nd898/parts/cd0327/lessons/7bd061fe-f60b-4bab-81f0-36d5b8eeddc6",
+          "file": "html/sources/nd898/06_7bd061fe-f60b-4bab-81f0-36d5b8eeddc6.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd898?version=6.0.10&partKey=cd0327&lessonKey=7bd061fe-f60b-4bab-81f0-36d5b8eeddc6&conceptKey=f450e338-99b2-471b-b373-efed07404809"
+        },
+        {
+          "key": "c0d4ea2f-c942-46f7-8eb9-c9449378461d",
+          "url": "https://learn.udacity.com/nanodegrees/nd898/parts/cd1799/lessons/c0d4ea2f-c942-46f7-8eb9-c9449378461d",
+          "file": "html/sources/nd898/07_c0d4ea2f-c942-46f7-8eb9-c9449378461d.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd898?version=6.0.10&partKey=cd1799&lessonKey=c0d4ea2f-c942-46f7-8eb9-c9449378461d&conceptKey=b8cdb3ee-640f-46c8-a004-de8ecdd9e180"
+        },
+        {
+          "key": "4bcb5c3a-7197-440a-87c3-99e7542a8fdb",
+          "url": "https://learn.udacity.com/nanodegrees/nd898/parts/cd1799/lessons/4bcb5c3a-7197-440a-87c3-99e7542a8fdb",
+          "file": "html/sources/nd898/08_4bcb5c3a-7197-440a-87c3-99e7542a8fdb.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd898?version=6.0.10&partKey=cd1799&lessonKey=4bcb5c3a-7197-440a-87c3-99e7542a8fdb&conceptKey=052399ac-f5da-4ecf-8304-7ffa713f85b4"
+        },
+        {
+          "key": "6d2c8fb0-c99a-4224-b51d-3c7cf9ec3d8b",
+          "url": "https://learn.udacity.com/nanodegrees/nd898/parts/cd1799/lessons/6d2c8fb0-c99a-4224-b51d-3c7cf9ec3d8b",
+          "file": "html/sources/nd898/09_6d2c8fb0-c99a-4224-b51d-3c7cf9ec3d8b.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd898?version=6.0.10&partKey=cd1799&lessonKey=6d2c8fb0-c99a-4224-b51d-3c7cf9ec3d8b&conceptKey=58050766-5ce7-40b4-af0f-270d5c3a700d"
+        },
+        {
+          "key": "a8937ff0-3242-4b59-8d98-ce9016fb0700",
+          "url": "https://learn.udacity.com/nanodegrees/nd898/parts/cd1799/lessons/a8937ff0-3242-4b59-8d98-ce9016fb0700",
+          "file": "html/sources/nd898/10_a8937ff0-3242-4b59-8d98-ce9016fb0700.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd898?version=6.0.10&partKey=cd1799&lessonKey=a8937ff0-3242-4b59-8d98-ce9016fb0700&conceptKey=d8f9100a-e067-42cf-b9aa-5d569dec5dce"
+        },
+        {
+          "key": "7b7a645c-03b3-4507-9a4f-4bcc768bd399",
+          "url": "https://learn.udacity.com/nanodegrees/nd898/parts/cd1799/lessons/7b7a645c-03b3-4507-9a4f-4bcc768bd399",
+          "file": "html/sources/nd898/11_7b7a645c-03b3-4507-9a4f-4bcc768bd399.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd898?version=6.0.10&partKey=cd1799&lessonKey=7b7a645c-03b3-4507-9a4f-4bcc768bd399&conceptKey=ca1219f2-aa20-4a06-8268-ef74b74e0c70"
+        },
+        {
+          "key": "b4d942e9-4980-4c09-9d44-5cea7044730e",
+          "url": "https://learn.udacity.com/nanodegrees/nd898/parts/cd0350/lessons/b4d942e9-4980-4c09-9d44-5cea7044730e",
+          "file": "html/sources/nd898/12_b4d942e9-4980-4c09-9d44-5cea7044730e.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd898?version=6.0.10&partKey=cd0350&lessonKey=b4d942e9-4980-4c09-9d44-5cea7044730e&conceptKey=c19cf1e1-dc6b-4738-aa2d-fe6eeab2e47b"
+        },
+        {
+          "key": "e45765dd-7c7c-484d-a369-e0661f5c41af",
+          "url": "https://learn.udacity.com/nanodegrees/nd898/parts/cd0350/lessons/e45765dd-7c7c-484d-a369-e0661f5c41af",
+          "file": "html/sources/nd898/13_e45765dd-7c7c-484d-a369-e0661f5c41af.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd898?version=6.0.10&partKey=cd0350&lessonKey=e45765dd-7c7c-484d-a369-e0661f5c41af&conceptKey=4453d747-c6e6-4f82-ba21-8e352e35dc5a"
+        },
+        {
+          "key": "606b0a50-3bde-42a3-8f59-8c894c8e3ebf",
+          "url": "https://learn.udacity.com/nanodegrees/nd898/parts/cd0350/lessons/606b0a50-3bde-42a3-8f59-8c894c8e3ebf",
+          "file": "html/sources/nd898/14_606b0a50-3bde-42a3-8f59-8c894c8e3ebf.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd898?version=6.0.10&partKey=cd0350&lessonKey=606b0a50-3bde-42a3-8f59-8c894c8e3ebf&conceptKey=29e99271-9438-41cd-a53c-d84bd90923fa"
+        },
+        {
+          "key": "af6e2e1d-c3b3-4aad-a4eb-06e024a7f18f",
+          "url": "https://learn.udacity.com/nanodegrees/nd898/parts/cd0350/lessons/af6e2e1d-c3b3-4aad-a4eb-06e024a7f18f",
+          "file": "html/sources/nd898/15_af6e2e1d-c3b3-4aad-a4eb-06e024a7f18f.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd898?version=6.0.10&partKey=cd0350&lessonKey=af6e2e1d-c3b3-4aad-a4eb-06e024a7f18f&conceptKey=2d497b33-153a-4dcf-8e28-e02544d18e71"
+        },
+        {
+          "key": "ce1df80f-d348-4bfd-af6f-d00e8b36a0de",
+          "url": "https://learn.udacity.com/nanodegrees/nd898/parts/cd0350/lessons/ce1df80f-d348-4bfd-af6f-d00e8b36a0de",
+          "file": "html/sources/nd898/16_ce1df80f-d348-4bfd-af6f-d00e8b36a0de.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd898?version=6.0.10&partKey=cd0350&lessonKey=ce1df80f-d348-4bfd-af6f-d00e8b36a0de&conceptKey=0f3d825d-b82b-4ae8-a60c-4dfc3acec4c1"
+        },
+        {
+          "key": "6a804eae-57be-4ce1-941c-05d6d2c6df8d",
+          "url": "https://learn.udacity.com/nanodegrees/nd898/parts/cd1800/lessons/6a804eae-57be-4ce1-941c-05d6d2c6df8d",
+          "file": "html/sources/nd898/17_6a804eae-57be-4ce1-941c-05d6d2c6df8d.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd898?version=6.0.10&partKey=cd1800&lessonKey=6a804eae-57be-4ce1-941c-05d6d2c6df8d&conceptKey=979716be-54aa-4e07-8e2f-357635e4c4d0"
+        },
+        {
+          "key": "ddaa6536-fd15-4bba-a36a-42b7824b12ff",
+          "url": "https://learn.udacity.com/nanodegrees/nd898/parts/cd1800/lessons/ddaa6536-fd15-4bba-a36a-42b7824b12ff",
+          "file": "html/sources/nd898/18_ddaa6536-fd15-4bba-a36a-42b7824b12ff.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd898?version=6.0.10&partKey=cd1800&lessonKey=ddaa6536-fd15-4bba-a36a-42b7824b12ff&conceptKey=75c37ac1-9776-4275-a4e9-3f08dabb110c"
+        },
+        {
+          "key": "83dc69d4-1092-4607-b3a9-512b647c4454",
+          "url": "https://learn.udacity.com/nanodegrees/nd898/parts/cd1800/lessons/83dc69d4-1092-4607-b3a9-512b647c4454",
+          "file": "html/sources/nd898/19_83dc69d4-1092-4607-b3a9-512b647c4454.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd898?version=6.0.10&partKey=cd1800&lessonKey=83dc69d4-1092-4607-b3a9-512b647c4454&conceptKey=12980118-41af-4c62-aac7-26f69425f6ae"
+        },
+        {
+          "key": "6cdbf4d3-0237-412b-9073-b5572b8b6230",
+          "url": "https://learn.udacity.com/nanodegrees/nd898/parts/cd1800/lessons/6cdbf4d3-0237-412b-9073-b5572b8b6230",
+          "file": "html/sources/nd898/20_6cdbf4d3-0237-412b-9073-b5572b8b6230.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd898?version=6.0.10&partKey=cd1800&lessonKey=6cdbf4d3-0237-412b-9073-b5572b8b6230&conceptKey=49520039-1b7d-4d8b-a348-d5d4e4c24a14"
+        },
+        {
+          "key": "ec961eac-0991-4ffa-baff-5a19ac6fde97",
+          "url": "https://learn.udacity.com/nanodegrees/nd898/parts/cd1800/lessons/ec961eac-0991-4ffa-baff-5a19ac6fde97",
+          "file": "html/sources/nd898/21_ec961eac-0991-4ffa-baff-5a19ac6fde97.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd898?version=6.0.10&partKey=cd1800&lessonKey=ec961eac-0991-4ffa-baff-5a19ac6fde97&conceptKey=5c486233-f429-4f55-bd06-061671a52b86"
+        },
+        {
+          "key": "02256b15-8597-4127-9e89-b1731bad386b",
+          "url": "https://learn.udacity.com/nanodegrees/nd898/parts/cd1800/lessons/02256b15-8597-4127-9e89-b1731bad386b",
+          "file": "html/sources/nd898/22_02256b15-8597-4127-9e89-b1731bad386b.html",
+          "ok": true,
+          "final_url": "https://learn.udacity.com/nd898?version=6.0.10&partKey=cd1800&lessonKey=02256b15-8597-4127-9e89-b1731bad386b&conceptKey=fa87db83-5a6d-4eb0-8979-79baef1a001d"
+        }
+      ]
+    }
+  }
+}

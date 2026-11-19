@@ -1,0 +1,21 @@
+# 下载产物（体积大，不入库）
+downloads/
+
+# 所有日志
+*.log
+nohup.out
+
+# 浏览器持久化配置（含登录 Cookie，勿提交）
+chrome_profile/
+
+# Python 虚拟环境与缓存
+.venv/
+__pycache__/
+*.pyc
+
+# 临时下载文件 / notebook 缓存
+_tmp_*
+.ipynb_checkpoints/
+
+# 系统杂项
+.DS_Store
