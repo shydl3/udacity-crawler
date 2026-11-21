@@ -37,6 +37,11 @@ RESOURCE_SELECTORS = {
 }
 RESOURCE_LABELS = {"videos": "Videos", "transcripts": "Transcripts"}
 
+# exercise 页面上的启动按钮（已启动的 workspace 不会再显示它）
+_LAUNCH_RE = re.compile(r"(?:start|resume|open|launch|continue)\s+workspace", re.IGNORECASE)
+# 没有启动按钮时只等已有 workspace 面板，不必等满整个启动超时
+READY_TIMEOUT_NO_LAUNCH = 30_000
+
 _CONTENT_READY_JS = """() => {
     const scroll = document.querySelector('.lesson-content-scroll-container');
     if (!scroll) return false;
@@ -248,7 +253,7 @@ class NotebookJob:
 
 
 class WorkspaceWorker(_QueueWorker):
-    """exercise chapter：启动 workspace → Settings → 下载 notebook 压缩包 → 解压重命名。"""
+    """exercise chapter：启动（或复用已开启的）workspace → Settings → 下载 notebook 压缩包 → 解压重命名。"""
 
     name = "notebooks"
 
@@ -283,46 +288,23 @@ class WorkspaceWorker(_QueueWorker):
         }""")
         await page.wait_for_timeout(1200)
 
-        launch = page.locator('.lesson-content-scroll-container button').filter(
-            has_text=re.compile(r"start\s*workspace", re.I))
-        if not await launch.count():
-            log.info("  [notebook] 无 Start Workspace，跳过 %s", job.chapter_title)
-            return
-        try:
-            await launch.last.scroll_into_view_if_needed()
-            await safe_click(launch.last, page)
-        except Exception as exc:
-            log.warning("  [notebook] Start Workspace 点击失败：%s", exc)
-            return
+        launch = page.locator('.lesson-content-scroll-container button').filter(has_text=_LAUNCH_RE)
+        if await launch.count():
+            settings_button = await self._start_workspace(page, launch, job.chapter_title)
+        else:
+            # 页面不再显示 Start Workspace，通常意味着 workspace 已经处于开启状态；
+            # 不阻塞流程，直接去定位 Settings 面板。
+            log.info("  [notebook] 无 Start Workspace（workspace 可能已开启），直接定位 Settings：%s",
+                     job.chapter_title)
+            settings_button = await self._wait_ready(page, timeout=READY_TIMEOUT_NO_LAUNCH)
 
-        log.info("  [notebook] workspace 启动中：%s", job.chapter_title)
-        if await self._handle_active_workspace(page):
-            try:
-                await safe_click(launch.last, page)
-                log.info("  [notebook] 旧 workspace 已关闭，重新启动")
-            except Exception as exc:
-                log.warning("  [notebook] 重新启动失败：%s", exc)
-                return
-
-        settings_button = await self._wait_ready(page)
         if settings_button is None:
-            log.info("  [notebook] 首次启动超时，重试一次")
-            try:
-                await safe_click(launch.last, page)
-                await self._handle_active_workspace(page)
-                await safe_click(launch.last, page)
-            except Exception:
-                pass
-            settings_button = await self._wait_ready(page)
-        if settings_button is None:
-            log.warning("  [notebook] workspace 启动超时：%s", job.chapter_title)
+            log.info("  [notebook] 未出现 Settings，视为该 chapter 无可下载 notebook：%s",
+                     job.chapter_title)
             return
 
-        await settings_button.click()
-        await page.wait_for_timeout(2500)
-        download_button = page.locator('.lesson-content-scroll-container button').filter(
-            has_text=re.compile(r"download", re.I))
-        if not await download_button.count():
+        download_button = await self._open_settings(page, settings_button)
+        if download_button is None:
             await page.screenshot(path=str(self.settings.out / "_workspace_debug.png"))
             log.warning("  [notebook] 未找到下载按钮，截图见 _workspace_debug.png")
             return
@@ -343,11 +325,62 @@ class WorkspaceWorker(_QueueWorker):
             if archive and archive.exists():
                 archive.unlink()
 
-    async def _wait_ready(self, page: Page):
+    async def _open_settings(self, page: Page, settings_button):
+        """点开 Settings 并等下载按钮出现。
+
+        workspace 已开启时 Settings 面板可能本来就是展开的，此时首次点击反而会把它收起；
+        再点一次即可重新展开，所以这里最多尝试两次，并用 wait_for 代替固定 sleep。
+        """
+        download_button = page.locator('.lesson-content-scroll-container button:visible').filter(
+            has_text=re.compile(r"download", re.I))
+        for _ in range(2):
+            try:
+                await settings_button.click(timeout=15_000)
+            except Exception as exc:
+                log.warning("  [notebook] Settings 点击失败：%s", exc)
+                continue
+            try:
+                await download_button.first.wait_for(state="visible", timeout=12_000)
+                return download_button
+            except PWTimeout:
+                continue
+        return None
+
+    async def _start_workspace(self, page: Page, launch, chapter_title: str):
+        """点击 Start/Resume Workspace 并等 Settings 出现；失败返回 None。"""
+        try:
+            await launch.last.scroll_into_view_if_needed()
+            await safe_click(launch.last, page)
+        except Exception as exc:
+            log.warning("  [notebook] Start Workspace 点击失败：%s", exc)
+            return None
+
+        log.info("  [notebook] workspace 启动中：%s", chapter_title)
+        if await self._handle_active_workspace(page):
+            try:
+                await safe_click(launch.last, page)
+                log.info("  [notebook] 旧 workspace 已关闭，重新启动")
+            except Exception as exc:
+                log.warning("  [notebook] 重新启动失败：%s", exc)
+                return None
+
+        settings_button = await self._wait_ready(page)
+        if settings_button is None:
+            log.info("  [notebook] 首次启动超时，重试一次")
+            try:
+                await safe_click(launch.last, page)
+                await self._handle_active_workspace(page)
+                await safe_click(launch.last, page)
+            except Exception:
+                pass
+            settings_button = await self._wait_ready(page)
+        return settings_button
+
+    async def _wait_ready(self, page: Page, timeout: int = WORKSPACE_TIMEOUT):
         button = page.locator('.lesson-content-scroll-container button').filter(
             has_text=re.compile(r"^\s*\d*\s*Settings\s*$"))
         try:
-            await button.first.wait_for(state="visible", timeout=WORKSPACE_TIMEOUT)
+            await button.first.wait_for(state="visible", timeout=timeout)
             return button.first
         except PWTimeout:
             return None
