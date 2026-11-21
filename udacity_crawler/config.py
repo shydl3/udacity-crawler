@@ -83,7 +83,7 @@ class Settings:
 
     out: Path = DEFAULT_OUT
     profile: Path = DEFAULT_PROFILE
-    headless: bool = False
+    headless: bool = True
     channel: str = "chrome"
     resources: bool = True      # 下载 lesson 的 Videos / Transcripts zip
     notebooks: bool = True      # 下载 exercise 的 jupyter notebook
