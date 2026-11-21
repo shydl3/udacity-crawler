@@ -9,9 +9,9 @@ from pathlib import Path
 from playwright.async_api import Page
 from playwright.async_api import TimeoutError as PWTimeout
 
-from . import catalog
-from .browser import BrowserSession, dismiss_modals, safe_click
-from .config import (
+import catalog
+from browser import BrowserSession, dismiss_modals, safe_click
+from config import (
     CONTENT_TIMEOUT,
     NAV_TIMEOUT,
     RENDER_TIMEOUT,
@@ -20,11 +20,11 @@ from .config import (
     normalize_title,
     sanitize,
 )
-from .content import extract_content, localize_images, prepare_page, render_chapter
-from .logs import log
-from .state import LocalIndex, StateStore
-from .ui import format_duration
-from .workers import ResourceWorker, WorkspaceWorker
+from content import extract_content, localize_images, prepare_page, render_chapter
+from logs import log
+from state import LocalIndex, StateStore
+from ui import format_duration
+from workers import ResourceWorker, WorkspaceWorker
 
 _CHAPTER_ITEMS = (
     '#lesson-panel .chakra-accordion__item:has(> button[aria-expanded="true"]) '

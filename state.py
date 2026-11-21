@@ -11,7 +11,7 @@ import os
 import re
 from pathlib import Path
 
-from .config import normalize_title, sanitize
+from config import normalize_title, sanitize
 
 _TITLE_RE = re.compile(r"<title[^>]*>(.*?)</title>", re.IGNORECASE | re.DOTALL)
 _INDEX_PREFIX_RE = re.compile(r"^\d+_")

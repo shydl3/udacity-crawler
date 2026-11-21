@@ -7,6 +7,7 @@ nohup.out
 
 # 浏览器持久化配置（含登录 Cookie，勿提交）
 chrome_profile/
+html/
 
 # Python 虚拟环境与缓存
 .venv/

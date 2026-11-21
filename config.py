@@ -6,7 +6,10 @@ import re
 from dataclasses import dataclass
 from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+# 所有模块都在项目根目录，直接 python cli.py 运行
+BASE_DIR = Path(__file__).resolve().parent
+
+__version__ = "2.0.0"
 
 DEFAULT_OUT = BASE_DIR / "downloads"
 DEFAULT_PROFILE = BASE_DIR / "chrome_profile"
@@ -24,6 +27,9 @@ CONTENT_TIMEOUT = 30_000
 DOWNLOAD_TIMEOUT = int(os.environ.get("UDACITY_DOWNLOAD_TIMEOUT_MS", "900000"))
 WORKSPACE_TIMEOUT = 480_000
 SETTLE_MS = 600
+
+# 默认不弹窗；需要看界面时用 --headed
+DEFAULT_HEADLESS = True
 
 _UNSAFE_CHARS = re.compile(r'[\\/:*?"<>|\r\n\t]+')
 
@@ -83,7 +89,7 @@ class Settings:
 
     out: Path = DEFAULT_OUT
     profile: Path = DEFAULT_PROFILE
-    headless: bool = True
+    headless: bool = DEFAULT_HEADLESS
     channel: str = "chrome"
     resources: bool = True      # 下载 lesson 的 Videos / Transcripts zip
     notebooks: bool = True      # 下载 exercise 的 jupyter notebook

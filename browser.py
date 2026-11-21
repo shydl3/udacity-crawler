@@ -9,7 +9,7 @@ from playwright.async_api import BrowserContext, Page, Playwright
 from playwright.async_api import TimeoutError as PWTimeout
 from playwright.async_api import async_playwright
 
-from .config import (
+from config import (
     DASHBOARD_URL,
     NAV_TIMEOUT,
     RENDER_TIMEOUT,
@@ -17,7 +17,7 @@ from .config import (
     Credentials,
     Settings,
 )
-from .logs import log
+from logs import log
 
 # 只屏蔽纯统计脚本，不影响业务接口
 _BLOCK_PATTERNS = (
@@ -103,6 +103,7 @@ class BrowserSession:
             log.warning("启动 %s 失败（%s），改用内置 chromium", self.settings.channel, exc)
             self.context = await self._playwright.chromium.launch_persistent_context(**launch_kwargs)
 
+        log.debug("Chrome 已启动：headless=%s, channel=%s", self.settings.headless, self.settings.channel)
         self.context.set_default_timeout(UI_TIMEOUT)
         self.context.set_default_navigation_timeout(NAV_TIMEOUT)
         if self.settings.block_analytics:
@@ -133,6 +134,9 @@ class BrowserSession:
         if "auth.udacity.com" not in page.url:
             log.info("已登录（复用 %s 的会话）", self.settings.profile.name)
             return
+
+        if self.settings.headless:
+            log.warning("headless 模式下无法人工完成登录（可能需验证码）；若登录失败请改用 --headed 先登录一次")
 
         log.info("需要登录，使用 %s", credentials.email)
         email_input = page.locator('input[name="email"]').first

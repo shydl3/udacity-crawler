@@ -1,4 +1,8 @@
-"""命令行入口：登录 → 选择 enrollment → 并发下载。"""
+#!/usr/bin/env python3
+"""命令行入口：登录 → 选择 enrollment → 并发下载。
+
+在项目根目录直接运行：python cli.py（或 .venv/bin/python cli.py）
+"""
 from __future__ import annotations
 
 import argparse
@@ -6,28 +10,36 @@ import asyncio
 import sys
 from pathlib import Path
 
-from . import __version__, catalog, ui
-from .browser import BrowserSession
-from .config import (
-    DEFAULT_LOGIN,
-    DEFAULT_OUT,
-    DEFAULT_PROFILE,
-    Settings,
-    load_credentials,
-    normalize_title,
-)
-from .crawler import Crawler
-from .logs import log, setup_logging
-from .state import LocalIndex, StateStore
+try:
+    import catalog
+    import ui
+    from browser import BrowserSession
+    from config import (
+        DEFAULT_HEADLESS,
+        DEFAULT_LOGIN,
+        DEFAULT_OUT,
+        DEFAULT_PROFILE,
+        Settings,
+        __version__,
+        load_credentials,
+        normalize_title,
+    )
+    from crawler import Crawler
+    from logs import log, setup_logging
+    from state import LocalIndex, StateStore
+except ModuleNotFoundError as exc:  # 未装依赖时给出明确提示，而不是一堆堆栈
+    if (exc.name or "").split(".")[0] == "playwright":
+        raise SystemExit("缺少依赖 playwright，请先执行：pip install -r requirements.txt") from exc
+    raise
 
 _EPILOG = """示例:
-  python download_course.py                        # 交互式多选（空格选中，Enter 开始）
-  python download_course.py --all                  # 下载全部 enrollment
-  python download_course.py --select nd787,nd898   # 按 key 或标题直接下载
-  python download_course.py --list                 # 只列出可下载的 enrollment
-  python download_course.py --only-lesson <key>    # 补跑某个 lesson
-  python download_course.py --force               # 忽略已存在，重新抓取正文/图片
-  python download_course.py --no-resources --no-images   # 只抓正文 HTML
+  python cli.py                        # 交互式多选（空格选中，Enter 开始）
+  python cli.py --all                  # 下载全部 enrollment
+  python cli.py --select nd787,nd898   # 按 key 或标题直接下载
+  python cli.py --list                 # 只列出可下载的 enrollment
+  python cli.py --only-lesson <key>    # 补跑某个 lesson
+  python cli.py --force                # 忽略已存在，重新抓取正文/图片
+  python cli.py --no-resources --no-images   # 只抓正文 HTML
 
 跳过策略: 逐级按标题比对保存路径，chapter 以 HTML 的 <title> 为指纹，
 已存在即跳过（不比对内容），因此可随时中断、重跑续传。
@@ -48,7 +60,10 @@ def _build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--login-file", type=Path, default=DEFAULT_LOGIN, help="凭据文件（首行邮箱、次行密码）")
     parser.add_argument("--email", default="", help="登录邮箱（覆盖 login.txt）")
     parser.add_argument("--password", default="", help="登录密码（覆盖 login.txt）")
-    parser.add_argument("--headless", action="store_true", help="无界面运行（首次登录建议不用）")
+    parser.add_argument("--headless", dest="headless", action="store_true", default=None,
+                        help="无窗口运行（默认，见 config.DEFAULT_HEADLESS）")
+    parser.add_argument("--headed", dest="headless", action="store_false",
+                        help="显示浏览器窗口（首次登录或排查问题时用）")
     parser.add_argument("--channel", default="chrome", help="浏览器内核，默认 chrome，失败回退 chromium")
 
     parser.add_argument("--select", default="", help="直接指定 enrollment（key 或标题，逗号分隔）")
@@ -143,12 +158,12 @@ async def _run(args, settings: Settings) -> None:
         await crawler.run(selected, page=page)
 
 
-def main(argv: list[str] | None = None) -> int:
-    args = _build_parser().parse_args(argv)
-    settings = Settings(
+def _settings_from_args(args) -> Settings:
+    """把命令行参数转成 Settings；未指定的开关沿用 config 里的默认值。"""
+    return Settings(
         out=args.out.expanduser().resolve(),
         profile=args.profile.expanduser().resolve(),
-        headless=args.headless,
+        headless=DEFAULT_HEADLESS if args.headless is None else args.headless,
         channel=args.channel,
         resources=not args.no_resources,
         notebooks=not args.no_notebooks,
@@ -163,9 +178,15 @@ def main(argv: list[str] | None = None) -> int:
         log_file=args.log_file,
         verbose=args.verbose,
     )
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = _build_parser().parse_args(argv)
+    settings = _settings_from_args(args)
     settings.prepare()
     setup_logging(settings.verbose, settings.log_file)
     log.info("保存目录：%s", settings.out)
+    log.info("浏览器模式：%s", "headless（无窗口）" if settings.headless else "有界面")
 
     try:
         asyncio.run(_run(args, settings))

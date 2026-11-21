@@ -18,8 +18,8 @@ from urllib.parse import unquote
 from playwright.async_api import Page
 from playwright.async_api import TimeoutError as PWTimeout
 
-from .browser import BrowserSession, dismiss_modals, safe_click
-from .config import (
+from browser import BrowserSession, dismiss_modals, safe_click
+from config import (
     DOWNLOAD_TIMEOUT,
     NAV_TIMEOUT,
     RENDER_TIMEOUT,
@@ -28,8 +28,8 @@ from .config import (
     Settings,
     sanitize,
 )
-from .logs import log
-from .state import LocalIndex, StateStore
+from logs import log
+from state import LocalIndex, StateStore
 
 RESOURCE_SELECTORS = {
     "videos": 'button[aria-label^="Download Videos Zip File"]',

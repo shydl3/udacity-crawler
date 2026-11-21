@@ -8,14 +8,14 @@ from pathlib import Path
 from playwright.async_api import Page
 from playwright.async_api import TimeoutError as PWTimeout
 
-from .browser import safe_click, wait_until_quiet
-from .config import (
+from browser import safe_click, wait_until_quiet
+from config import (
     DASHBOARD_URL,
     ENROLLMENT_URL,
     NAV_TIMEOUT,
     RENDER_TIMEOUT,
 )
-from .logs import log
+from logs import log
 
 
 @dataclass
