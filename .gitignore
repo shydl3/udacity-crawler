@@ -19,3 +19,6 @@ _tmp_*
 
 # 系统杂项
 .DS_Store
+
+# 账号密码（切勿提交）
+login.txt

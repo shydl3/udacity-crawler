@@ -1,4 +1,4 @@
-1. 前往www.udacity.com/ 使用账号xxxxx 密码xxxxx 登陆
+1. 前往www.udacity.com/ 使用login.txt的邮箱和密码 登陆
 
 2. 打开https://www.udacity.com/dashboard/enrollments，定位到 #__next > div > main > div > div > div.chakra-container.css-h3x02v > section.css-1821gv5 所包含的所有子项目，也就是课程。比如Flying Car and Autonomous Flight Engineer #__next > div > main > div > div > div.chakra-container.css-h3x02v > section.css-1821gv5 > article:nth-child(1) > div > div.css-1bkjvl7 > div.css-1v87a54 > a
 

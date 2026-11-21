@@ -1,0 +1,5 @@
+# 依赖只有一个：Playwright（异步驱动 Chrome）
+# 安装：pip install -r requirements.txt
+# 若使用系统 Chrome（默认 --channel chrome）无需再装浏览器；否则执行：
+#   python -m playwright install chromium
+playwright>=1.48,<2
