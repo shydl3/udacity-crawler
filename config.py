@@ -94,7 +94,7 @@ class Settings:
     profile: Path = DEFAULT_PROFILE
     headless: bool = DEFAULT_HEADLESS
     channel: str = "chrome"
-    resources: bool = True      # 下载 lesson 的 Videos / Transcripts zip
+    resources: bool = False     # 默认不下载 Videos/Transcripts zip；需要时用 --video
     notebooks: bool = True      # 下载 exercise 的 jupyter notebook
     images: bool = True         # 把正文图片抓到本地 _assets 目录
     block_analytics: bool = True

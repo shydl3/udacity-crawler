@@ -33,14 +33,16 @@ except ModuleNotFoundError as exc:  # 未装依赖时给出明确提示，而不
     raise
 
 _EPILOG = """示例:
-  python cli.py                        # 交互式多选（空格选中，Enter 开始）
+  python cli.py                        # 默认：网页 + 图片 + notebook（不含视频/字幕）
+  python cli.py --video                # 额外下载 Videos + Transcripts zip
   python cli.py --all                  # 下载全部 enrollment
   python cli.py --select nd787,nd898   # 按 key 或标题直接下载
   python cli.py --list                 # 只列出可下载的 enrollment
   python cli.py --only-lesson <key>    # 补跑某个 lesson
   python cli.py --force                # 忽略已存在，重新抓取正文/图片
-  python cli.py --no-resources --no-images   # 只抓正文 HTML
+  python cli.py --no-images            # 只抓文字，不下载正文图片
 
+默认下载范围: 章节网页（含图片）+ exercise 的 jupyter notebook；视频/字幕不下载。
 跳过策略: 逐级按标题比对保存路径，chapter 以 HTML 的 <title> 为指纹，
 已存在即跳过（不比对内容），因此可随时中断、重跑续传。
 """
@@ -70,7 +72,8 @@ def _build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--all", action="store_true", help="下载全部 enrollment，跳过交互选择")
     parser.add_argument("--list", action="store_true", help="只列出可下载的 enrollment 后退出")
 
-    parser.add_argument("--no-resources", action="store_true", help="不下载 videos/transcripts zip")
+    parser.add_argument("--video", action="store_true",
+                        help="额外下载 Videos + Transcripts zip（默认只抓网页/图片/notebook）")
     parser.add_argument("--no-notebooks", action="store_true", help="不下载 exercise 的 jupyter notebook")
     parser.add_argument("--no-images", action="store_true", help="不把正文图片下载到本地 _assets")
     parser.add_argument("--no-block-analytics", action="store_true", help="不屏蔽统计脚本")
@@ -165,7 +168,7 @@ def _settings_from_args(args) -> Settings:
         profile=args.profile.expanduser().resolve(),
         headless=DEFAULT_HEADLESS if args.headless is None else args.headless,
         channel=args.channel,
-        resources=not args.no_resources,
+        resources=args.video,
         notebooks=not args.no_notebooks,
         images=not args.no_images,
         block_analytics=not args.no_block_analytics,
@@ -187,6 +190,8 @@ def main(argv: list[str] | None = None) -> int:
     setup_logging(settings.verbose, settings.log_file)
     log.info("保存目录：%s", settings.out)
     log.info("浏览器模式：%s", "headless（无窗口）" if settings.headless else "有界面")
+    log.info("下载范围：网页 + 图片 + notebook%s",
+             " + 视频/字幕" if settings.resources else "（视频/字幕默认不下载，需要时加 --video）")
 
     try:
         asyncio.run(_run(args, settings))

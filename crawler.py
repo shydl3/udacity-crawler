@@ -60,14 +60,17 @@ class RunStats:
     images: int = 0
     started: float = 0.0
 
-    def summary(self, resources_queued: int, notebooks_queued: int, failures: int) -> str:
+    def summary(self, resources_queued: int, notebooks_queued: int, failures: int,
+                resources_enabled: bool = True) -> str:
+        media = (f"资源任务 {resources_queued} 个" if resources_enabled
+                 else "视频/字幕 未下载（--video 开启）")
         lines = [
             "",
             "=" * 56,
             f" 完成 · 用时 {format_duration(time.monotonic() - self.started)}",
             f" lesson {self.lessons} 个 · chapter 新增 {self.chapters_new} / "
             f"已存在 {self.chapters_skipped} / 失败 {self.chapters_failed}",
-            f" 图片 {self.images} 张 · 资源任务 {resources_queued} 个 · notebook 任务 {notebooks_queued} 个",
+            f" 图片 {self.images} 张 · {media} · notebook 任务 {notebooks_queued} 个",
         ]
         if failures:
             lines.append(f" 后台任务失败 {failures} 个（详见上方日志）")
@@ -112,7 +115,8 @@ class Crawler:
             await self.notebooks.close()
         failures = (self.resources.failures if self.resources else 0) + \
                    (self.notebooks.failures if self.notebooks else 0)
-        log.info("%s", self.stats.summary(self.resources_queued, self.notebooks_queued, failures))
+        log.info("%s", self.stats.summary(self.resources_queued, self.notebooks_queued, failures,
+                                            self.settings.resources))
 
     # -------------------------------------------------------------- 层级遍历
     async def _crawl_enrollment(self, enrollment: catalog.Enrollment, counter: int) -> int:
