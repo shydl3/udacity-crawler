@@ -14,11 +14,14 @@ from pathlib import Path
 
 from playwright.async_api import Page
 
+from config import HTML_TEMPLATE_VERSION
+
 _TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="udacity-crawler-template" content="{template_version}">
 <title>{title}</title>
 <style>
  :root {{
@@ -71,7 +74,7 @@ _TEMPLATE = """<!DOCTYPE html>
  main label {{ display: block; padding: 9px 13px; margin: 6px 0; border: 1px solid var(--border);
               border-radius: 8px; cursor: default; }}
  main label p {{ margin: 0; }}
- main label span {{ display: block; }}
+ main label > span {{ display: block; }}
  main label[data-selected="1"] {{ border-color: var(--accent); font-weight: 600;
    background: color-mix(in srgb, var(--accent) 8%, transparent); }}
  main label[data-selected="1"]::before {{ content: "✓ "; color: var(--accent); }}
@@ -124,14 +127,21 @@ _EXTRACT_JS = """() => {
         || scroll;
     const clone = content.cloneNode(true);
 
+    // 公式子树（KaTeX/MathJax/MathML）内部结构与行内样式就是排版本身，
+    // 后续所有清理都必须绕开它，否则分数/开方/矩阵会挤成一团。
+    const MATH_SEL = '.katex, .katex-display, mjx-container, math';
+    const inMath = el => !!(el.closest && el.closest(MATH_SEL));
+    let katexCss = '';
+
     // 1) 非图文元素：播放器、按钮、表单控件、埋点脚本
     clone.querySelectorAll(
         'script, style, link, iframe, video, audio, source, object, embed, button, input, textarea, select,' +
         '[data-testid="html-player"], [role="alert"], .chakra-skeleton, .chakra-spinner'
-    ).forEach(el => el.remove());
+    ).forEach(el => { if (!inMath(el)) el.remove(); });
 
     // 2) 代码块压平成 <pre><code>纯文本</code></pre>，丢掉行内高亮样式
     clone.querySelectorAll('pre').forEach(pre => {
+        if (inMath(pre)) return;
         const codeEl = pre.querySelector('code');
         const lang = codeEl ? [...codeEl.classList].find(c => c.startsWith('language-')) || '' : '';
         const text = ((codeEl || pre).textContent || '').replace(/\\n+$/, '');
@@ -163,6 +173,7 @@ _EXTRACT_JS = """() => {
     for (let pass = 0; pass < 5; pass++) {
         let removed = 0;
         clone.querySelectorAll('div, section, article, figure').forEach(el => {
+            if (inMath(el)) return;
             if (el.querySelector(KEEP)) return;
             if ((el.textContent || '').trim()) return;
             el.remove();
@@ -179,7 +190,7 @@ _EXTRACT_JS = """() => {
         DETAILS: ['open'], MATH: ['display'], TIME: ['datetime'],
     };
     clone.querySelectorAll('*').forEach(el => {
-        if (el.closest('.katex') || el.closest('math')) return;
+        if (inMath(el)) return;
         const keep = allowed[el.tagName] || [];
         [...el.attributes].forEach(attr => {
             const isLang = el.tagName === 'CODE' && attr.name === 'class' && /language-/.test(attr.value);
@@ -198,16 +209,20 @@ _EXTRACT_JS = """() => {
     });
 
     // 8) 压平冗余的 div/form 与空 span，让 HTML 干净可读
-    clone.querySelectorAll('form').forEach(form => form.replaceWith(...[...form.childNodes]));
+    clone.querySelectorAll('form').forEach(form => {
+        if (!inMath(form)) form.replaceWith(...[...form.childNodes]);
+    });
     for (let pass = 0; pass < 5; pass++) {
         let changed = 0;
         clone.querySelectorAll('span').forEach(span => {
+            if (inMath(span)) return;
             if (!(span.textContent || '').trim() && !span.querySelector('img, pre, code, math')) {
                 span.remove();
                 changed++;
             }
         });
         clone.querySelectorAll('div').forEach(div => {
+            if (inMath(div)) return;
             const kids = [...div.children];
             const ownText = [...div.childNodes]
                 .some(node => node.nodeType === 3 && node.textContent.trim());
@@ -219,10 +234,27 @@ _EXTRACT_JS = """() => {
         if (!changed) break;
     }
 
+    // 9) 公式样式：直接从页面自带 stylesheet 里摘 KaTeX 相关规则，
+    //    版本与页面实际渲染一致，不依赖外部 CDN。
+    if (clone.querySelector(MATH_SEL)) {
+        const picked = [];
+        const keepCss = /katex|KaTeX_|\\.vlist|\\.mord|\\.mspace|\\.frac-line|\\.delimsizing|\\.size[1-4]|\\.fontsize-ensurer|\\.mtable|\\.strut|\\.pstrut|\\.sizing|\\.reset-size|\\.mathnormal/i;
+        for (const sheet of document.styleSheets) {
+            let rules;
+            try { rules = sheet.cssRules; } catch (e) { continue; }
+            for (const rule of rules) {
+                const text = rule.cssText || '';
+                if (keepCss.test(text)) picked.push(text);
+            }
+        }
+        katexCss = picked.join(String.fromCharCode(10));
+    }
+
     return {
         html: clone.innerHTML,
         text: clone.textContent || '',
         images: clone.querySelectorAll('img').length,
+        katexCss: katexCss,
     };
 }"""
 
@@ -240,6 +272,12 @@ _MIME_EXT = {
 }
 _KATEX_LINK = ('\n<link rel="stylesheet" '
                'href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">')
+_CSS_URL_RE = re.compile(r'url\((["\']?)(/(?!/)[^)"\']*)\1\)')
+
+
+def _absolutize_css_urls(css: str, base: str = "https://learn.udacity.com") -> str:
+    """把内联 CSS 里的根相对 url(/...) 补成绝对地址（字体仍从 Udacity CDN 拉）。"""
+    return _CSS_URL_RE.sub(lambda m: f'url({m.group(1)}{base}{m.group(2)}{m.group(1)})', css)
 
 
 def _strip_tags(fragment: str) -> str:
@@ -271,11 +309,16 @@ def _build_toc(body: str) -> tuple[str, str]:
 
 
 def render_chapter(title: str, body: str, source: str = "",
-                   breadcrumb: list[str] | None = None) -> str:
+                   breadcrumb: list[str] | None = None, katex_css: str = "") -> str:
     body, toc = _build_toc(body)
     crumbs = "".join(f"<span>{html_lib.escape(part)}</span>"
                      for part in (breadcrumb or []) if part)
-    katex = _KATEX_LINK if ("class=\"katex" in body or "<math" in body) else ""
+    if katex_css:
+        katex = f"\n<style>\n{_absolutize_css_urls(katex_css)}\n</style>"
+    elif 'class="katex' in body or "<math" in body:
+        katex = _KATEX_LINK          # 没抓到页面样式时的兼容回退
+    else:
+        katex = ""
     return _TEMPLATE.format(
         title=html_lib.escape(title),
         body=body,
@@ -284,6 +327,7 @@ def render_chapter(title: str, body: str, source: str = "",
         breadcrumb=crumbs or "<span>Udacity</span>",
         toc=toc,
         katex=katex,
+        template_version=HTML_TEMPLATE_VERSION,
     )
 
 

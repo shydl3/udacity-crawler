@@ -170,13 +170,16 @@ class Crawler:
         pending: list[tuple[int, bool]] = []
         for i, item in enumerate(chapters):
             title = item["title"]
-            has_html = normalize_title(title) in existing
+            path = existing.get(normalize_title(title))
+            has_html = path is not None
+            # 旧版保存的公式页排版已坏，即使标题已存在也重抓一次
+            stale_math = has_html and self.index.math_html_stale(path)
             needs_notebook = (self.settings.notebooks and _EXERCISE_RE.search(title)
                               and not self.index.notebook_ready(lesson_dir, title))
             if self.settings.overwrite:
                 pending.append((i, True))
-            elif not has_html or needs_notebook:
-                pending.append((i, not has_html))
+            elif not has_html or needs_notebook or stale_math:
+                pending.append((i, not has_html or stale_math))
         skipped = len(chapters) - len(pending)
         self.stats.chapters_skipped += skipped
         if self.settings.max_chapters:
@@ -248,7 +251,8 @@ class Crawler:
         else:
             candidate = lesson_dir / f"{number:02d}_{sanitize(title, 'chapter')}.html"
 
-        candidate.write_text(render_chapter(title, html_body, chapter_url, breadcrumb), encoding="utf-8")
+        candidate.write_text(render_chapter(title, html_body, chapter_url, breadcrumb,
+                                           content.get("katexCss", "")), encoding="utf-8")
         return candidate, images
 
     # ------------------------------------------------------------ 页面交互

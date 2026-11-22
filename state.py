@@ -11,7 +11,7 @@ import os
 import re
 from pathlib import Path
 
-from config import normalize_title, sanitize
+from config import HTML_TEMPLATE_VERSION, normalize_title, sanitize
 
 _TITLE_RE = re.compile(r"<title[^>]*>(.*?)</title>", re.IGNORECASE | re.DOTALL)
 _INDEX_PREFIX_RE = re.compile(r"^\d+_")
@@ -136,6 +136,25 @@ class LocalIndex:
 
     def chapter_file(self, lesson_dir: Path, chapter_title: str) -> Path | None:
         return self.chapters(lesson_dir).get(normalize_title(chapter_title))
+
+    @staticmethod
+    def math_html_stale(path: Path) -> bool:
+        """含公式的旧页面是否需要重抓。
+
+        正文模板会写入 <meta name="udacity-crawler-template" content="N">，
+        旧版（无标记或版本号更低）保存的公式页在清洗时丢失了公式子节点，需重新抓取。
+        不含公式的页面不受影响，避免无意义重抓。
+        """
+        try:
+            if path.stat().st_size > 4 * 1024 * 1024:
+                return False
+            text = path.read_text(encoding="utf-8", errors="ignore")
+        except OSError:
+            return False
+        if 'class="katex' not in text and "<mjx-container" not in text:
+            return False
+        marker = f'name="udacity-crawler-template" content="{HTML_TEMPLATE_VERSION}"'
+        return marker not in text
 
     # -------------------------------------------------------------- resource
     def resources(self, lesson_dir: Path) -> dict[str, list[Path]]:

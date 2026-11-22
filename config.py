@@ -18,6 +18,9 @@ DEFAULT_LOGIN = BASE_DIR / "login.txt"
 DASHBOARD_URL = "https://www.udacity.com/dashboard/enrollments"
 ENROLLMENT_URL = "https://www.udacity.com/enrollment/{key}"
 
+# 模板版本：改动正文清洗/公式处理时递增，旧页面会被自动重抓
+HTML_TEMPLATE_VERSION = "4"
+
 # 各阶段等待上限（毫秒）。网络慢时可整体放大，避免写死 sleep。
 NAV_TIMEOUT = 120_000
 UI_TIMEOUT = 60_000
